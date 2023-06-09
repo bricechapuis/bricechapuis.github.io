@@ -50,7 +50,7 @@ const previewImage = (input, mode) => {
 
 async function upload(formData) {
   try {
-    const response = await fetch("http://127.0.0.1:8000/", {
+    const response = await fetch("https://testing-fwbq4znlpq-od.a.run.app", {
       method: "POST",
       body: formData,
       mode: 'cors'
