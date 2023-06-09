@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400');
+
+
+@font-face{
+  font-family: "Montserrat Light";
+  src: url("../fonts/Montserrat-Light.ttf")
+}
+
+@font-face{
+  font-family: "Montserrat Thin";
+  src: url("../fonts/Montserrat-Thin.ttf")
+}
+
+@font-face{
+  font-family: "Montserrat Regular";
+  src: url("../fonts/Montserrat-Regular.ttf")
+}
+
+@font-face{
+  font-family: "Montserrat Medium";
+  src: url("../fonts/Montserrat-Medium.ttf")
+}
+
+@font-face{
+  font-family: "Montserrat Bold";
+  src: url("../fonts/Montserrat-Bold.ttf")
+}
+
+@font-face{
+  font-family: "Montserrat SemiBold";
+  src: url("../fonts/Montserrat-SemiBold.ttf")
+}
+
+@font-face{
+  font-family: "Montserrat Black";
+  src: url("../fonts/Montserrat-Black.ttf")
+}
+
+@font-face{
+  font-family: "Montserrat Italic";
+  src: url("../fonts/Montserrat-Italic.ttf")
+}
+
+@font-face{
+  font-family: "Montserrat BoldItalic";
+  src: url("../fonts/Montserrat-BoldItalic.ttf")
+}

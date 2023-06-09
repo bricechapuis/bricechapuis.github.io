@@ -1,0 +1,64 @@
+.header-links > .header-links__active::after {
+  height: 2px;
+  position: absolute;
+  content: "";
+  width: 100%;
+  top: 100%;
+  left: 0;
+  background: black;
+  transition: transform 0.5s;
+  transform: scaleX(0);
+  transform-origin: right;
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header-links > p, .dropdown {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  font-size: 1.6rem;
+  padding: 4px 0;
+  transition: 0.5s;
+}
+
+.header-links > p::after, .dropdown::after, p.from_left::after {
+  height: 2px;
+  position: absolute;
+  content: "";
+  width: 100%;
+  top: 100%;
+  left: 0;
+  background: black;
+  transition: transform 0.5s;
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.header-links > p.from_right::after {
+  height: 2px;
+  position: absolute;
+  content: "";
+  width: 100%;
+  top: 100%;
+  left: 0;
+  background: black;
+  transition: transform 0.5s;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.header-links > p:hover::after, .dropdown:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header-links > p.active::after, p.active.from_left::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header-links > p.active.from_right::after {
+  transform: scaleX(1);
+  transform-origin: right;
+}

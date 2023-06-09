@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>AI X Hunter</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="images/favicons/site.webmanifest">
+    <link rel="mask-icon" href="images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/index.css">
+
+  </head>
+
+  <body>
+
+    <!------------>
+    <!-- NAVBAR -->
+    <!------------>
+
+
+    <div class="height-10rem d-flex-wrap justify-content-center align-items-center
+            py-1rem px-2rem width-100 smooth-transition-0_8s pos-rel">
+
+      <a class="pos-abs mx-2rem"
+        href="/"
+        style="top: 1rem; left: 0;">
+
+        <img id='aixhunter-logo'
+            src="/assets/logo/AI X Hunter.png"
+            style="height: 80px;">
+
+      </a>
+
+      <div class="header-links d-flex align-items-center">
+
+        <p class="bs-black bs-black-onclick bs-black-hover fs-2rem font-weight-700 mx-5rem cursor-pointer active"
+           data-page="analyze"
+           onclick="changePage(0)">
+          Analyze
+        </p>
+
+        <p class="bs-black bs-black-onclick bs-black-hover fs-2rem font-weight-700 mx-5rem cursor-pointer"
+           data-page="infos"
+           onclick="changePage(1)">
+          Infos
+        </p>
+
+        <p class="bs-black bs-black-onclick bs-black-hover fs-2rem font-weight-700 mx-5rem cursor-pointer"
+           data-page="game"
+           onclick="changePage(2)">
+          Let's play !
+        </p>
+
+      </div>
+
+    </div>
+
+    <!------------>
+
+
+    <div id="main_container" class="flex-row-start-centered">
+
+      <div id="page_analyze" class="main_page d-flex flex-column justify-content-between align-items-center">
+
+        <h2 class="fs-2_4rem font-weight-700 my-5rem">Analyze</h2>
+
+        <div id="main_display" class="d-flex flex-column justify-content-between align-items-center">
+
+          <div class="tab_component">
+
+            <div class="tab_control flex-row-between-centered">
+
+              <p class="tab_choice active" onclick="tabChoose(this)" data-choice="file">From file</p>
+              <p class="tab_choice" onclick="tabChoose(this)" data-choice="url">From url</p>
+
+            </div>
+
+            <div class="tab_display flex-centered">
+
+              <input id="imgInp_file"
+                      class="tab_child"
+                      type="file"
+                      name="image"
+                      accept="image/png, image/jpeg"
+                      data-choice="file"
+                      onchange="previewImage(this, 'file');">
+
+              <input id="imgInp_url"
+                      class="tab_child hidden"
+                      type="url"
+                      name="url"
+                      placeholder="https://example.com"
+                      pattern="https://.*" size="30"
+                      data-choice="url"
+                      onchange="previewImage(this, 'url')">
+
+            </div>
+
+          </div>
+
+          <div id="image_preview_container" class="height-30rem">
+
+            <img id="imgPrev" src="#" alt="" />
+
+          </div>
+
+        </div>
+
+        <div>
+          <div id="main_input_submit" class="flex-centered">
+            <button id="submit_button" class="grey_button" onclick="sendData('analyze')">Submit</button>
+          </div>
+
+          <div id="main_result" class="flex-centered">
+            <p id="main_result_display_analyze" class="main_result_display"></p><span class="text_input"></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="page_infos" class="main_page">
+
+        <div class="vertical_page">
+
+            <div class="flex-col-start-centered">
+
+              <h2 class="fs-2_4rem font-weight-700 my-5rem">Infos</h2>
+
+            </div>
+
+        </div>
+
+        <div class="vertical_page">
+
+          <div class="flex-col-start-centered">
+
+            <h2 class="fs-2_4rem font-weight-700 my-5rem">Page 2</h2>
+
+          </div>
+
+      </div>
+
+      </div>
+
+      <div id="page_game" class="main_page d-flex flex-column justify-content-between align-items-center">
+
+        <div class="flex-col-start-centered">
+
+          <h2 class="fs-2_4rem font-weight-700 my-5rem">Let's play</h2>
+
+          <div id="default_random_content" class="random_content flex-centered">
+            <img src="https://thispersondoesnotexist.com/" alt="Random person">
+          </div>
+
+          <div id="random_content_loader" class="random_content flex-centered hidden">
+            <div id="spinner" class="spinner-lg spinner-border text-light" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+
+          <div class="random_content flex-centered hidden"
+              data-randint="1">
+            <img src="assets/pictures/arthur.jpeg" alt="Arthur">
+          </div>
+
+          <div class="random_content flex-centered hidden"
+              data-randint="2">
+            <img src="assets/pictures/charlotte.jpg" alt="Charlotte">
+          </div>
+
+          <div class="random_content flex-centered hidden"
+              data-randint="3">
+            <img src="assets/pictures/felipe.jpeg" alt="Felipe">
+          </div>
+
+          <div class="random_content flex-centered hidden"
+              data-randint="4">
+            <img src="assets/pictures/marguerite.jpeg" alt="Marguerite">
+          </div>
+
+          <div class="random_content flex-centered hidden"
+              data-randint="2">
+            <img src="assets/pictures/romain.jpeg" alt="Romain">
+          </div>
+
+        </div>
+
+        <div>
+
+          <div id="random_content_button" class="flex-centered my-2rem">
+            <button id="submit_button_random" class="grey_button" onclick="getRandom()">Get random image</button>
+          </div>
+
+          <div id="main_result" class="flex-centered">
+            <p id="main_result_display_random" class="main_result_display"></p><span class="text_input"></span>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <!---------------->
+    <!-- JAVASCRIPT -->
+    <!---------------->
+
+    <script src='javascript/script.js'></script>
+    <script src='javascript/page_system.js'></script>
+
+  </body>
+
+</html>
