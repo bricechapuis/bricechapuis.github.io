@@ -105,6 +105,17 @@ button:focus, button:active {
   transition: all 0.5s ease-in-out;
 }
 
+.grey_button.disabled {
+  background-color: lightgrey !important;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.grey_button.disabled:hover {
+  background-color: lightgrey !important;
+  color: #545B77 !important;
+}
+
 .grey_button > div {
   color: #545B77 !important;
 }
@@ -118,45 +129,10 @@ button:focus, button:active {
   color: white !important;
 }
 
-/*************/
-/* FLEXBOXES */
-/*************/
-
-.flex-centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-row-start-centered {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.flex-row-between-centered {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.flex-col-start-centered {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 
 /*****************/
 /* TAB COMPONENT */
 /*****************/
-
-.tab_component {
-  min-width: 300px;
-  width: 50%;
-}
 
 .tab_choice {
   width: 50%;
@@ -178,11 +154,6 @@ button:focus, button:active {
 .tab_choice.active {
   font-weight: bolder;
   border-bottom: 2px solid white;
-}
-
-.tab_component {
-  min-width: 300px;
-  width: 50%;
 }
 
 .tab_child {
@@ -209,13 +180,24 @@ button:focus, button:active {
 /* IMAGE PREVIEW */
 /* ***************/
 
-#image_preview_container {
-  margin: 30px 0 20px 0;
+#image_preview_container, #image_preview_container_mobile {
   position: relative;
+  border: 1px solid white;
+}
+
+#img_placeholder, #img_placeholder_mobile {
+  position: absolute;
+  top: calc(50% - 21px);
 }
 
 #imgPrev {
-  max-height: 300px;
+  height: 100%;
+  object-fit: cover;
+}
+
+#imgPrev_mobile {
+  height: 30rem;
+  object-fit: cover;
 }
 
 #image_preview_h {
@@ -293,10 +275,6 @@ button:focus, button:active {
   width: 80%;
 }
 
-#main_input_submit {
-  margin: 20px 0;
-}
-
 .main_result_display {
   width: fit-content;
   height: 48px;
@@ -313,4 +291,43 @@ button:focus, button:active {
   animation: blink 1s infinite;
 }
 
-  @keyframes blink { 50% { border-color:rgba(0,0,0,0); }  }
+@keyframes blink { 50% { border-color:rgba(0,0,0,0); }  }
+
+
+/**********/
+/* MOBILE */
+/**********/
+
+@media (max-width: 37.5em) {
+  #main_container {
+    /* overflow-y: scroll; */
+  }
+
+  .main_page {
+    min-height: calc(100vh - 100px);
+    height: fit-content;
+    max-height: fit-content;
+  }
+
+  #main_display {
+    height: fit-content;
+    flex-direction: column;
+  }
+
+  #control_container {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  #image_preview_container {
+    display: none !important;
+  }
+
+  #image_preview_container_mobile {
+    display: flex !important;
+  }
+
+  #main_submit {
+    margin-top: 5rem !important;
+  }
+}

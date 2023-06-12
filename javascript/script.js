@@ -36,10 +36,10 @@ const previewImage = (input, mode) => {
   if (mode == 'file') {
     const [file] = input.files
     if (file) {
-      imgPrev.src = URL.createObjectURL(file)
+      imgPrev.src = imgPrev_mobile.src = URL.createObjectURL(file)
     }
   } else {
-    imgPrev.src = input.value
+    imgPrev.src = imgPrev_mobile.src = input.value
   }
 }
 
@@ -47,6 +47,61 @@ const previewImage = (input, mode) => {
 /////////////////
 // FILE SUBMIT //
 /////////////////
+
+function checkVisible(elm, threshold = 0, mode = 'visible') {
+  threshold = threshold || 0;
+  mode = mode || 'visible';
+
+  var rect = elm.getBoundingClientRect();
+  var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+  var above = rect.bottom - threshold < 0;
+  var below = rect.top - viewHeight + threshold >= 0;
+
+  return mode === 'above' ? above : (mode === 'below' ? below : !above && !below);
+}
+
+const enableButton = () => {
+  console.log('start')
+  container = document.getElementById('main_display')
+  button = document.getElementById('submit_button')
+  input = container.querySelector('input:not(.hidden)')
+  console.log(input.value)
+  console.log(button)
+  if (input.value != '') {
+    button.disabled = false
+    button.classList.remove('disabled')
+  } else {
+    button.disabled = true
+    button.classList.add('disabled')
+  }
+}
+
+const sendData = () => {
+  if (!checkVisible(document.querySelector('.text_input'))) {
+    changeParams = {
+      top: 100,
+      behavior: "smooth",
+    }
+
+    document.getElementById('main_container').scroll(changeParams);
+  }
+
+
+  page = 'analyze'
+
+  loadingResult(true)
+
+  input = document.querySelector('input:not(.hidden)')
+  formData = new FormData()
+
+  if (input.type == 'file') {
+    formData.append("file", input.files[0]);
+  } else {
+    formData.append("url", input.value);
+  }
+
+  upload(formData)
+}
 
 async function upload(formData) {
   try {
@@ -64,24 +119,6 @@ async function upload(formData) {
     console.error("Error:", error);
   }
 }
-
-const sendData = () => {
-  page = 'analyze'
-
-  loadingResult(true)
-
-  input = document.querySelector('input:not(.hidden)')
-  formData = new FormData()
-
-  if (input.type == 'file') {
-    formData.append("file", input.files[0]);
-  } else {
-    formData.append("url", input.value);
-  }
-
-  upload(formData)
-}
-
 
 
 ////////////////////
@@ -166,4 +203,12 @@ const getRandom = () => {
     typeWriter()
   }, 1000);
 
+}
+
+//////////
+// MISC //
+//////////
+
+const closeHamburger = () => {
+  document.getElementById('navbar_checkbox').checked = false
 }

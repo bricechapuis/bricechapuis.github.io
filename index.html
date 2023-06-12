@@ -27,8 +27,8 @@
     <!------------>
 
 
-    <div class="height-10rem d-flex-wrap justify-content-center align-items-center
-            py-1rem px-2rem width-100 smooth-transition-0_8s pos-rel">
+    <div class="nav-container height-10rem d-flex-wrap justify-content-center align-items-center
+                px-2rem width-100 smooth-transition-0_8s pos-rel">
 
       <a class="pos-abs mx-2rem"
         href="/"
@@ -62,76 +62,136 @@
 
       </div>
 
+      <!------------>
+      <!-- BURGER -->
+      <!------------>
+
+      <input class="navbar_checkbox d-none" type="checkbox" name="" id="navbar_checkbox" onclick="console.log(this.checked)"/>
+
+      <div class="navbar_hamburger-lines d-none">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </div>
+
+      <div class="navbar_hamburger_menu">
+
+        <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer active"
+           data-page="analyze"
+           onclick="changePage(0); closeHamburger();">
+          Analyze
+        </p>
+
+        <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer"
+           data-page="infos"
+           onclick="changePage(1); closeHamburger();">
+          Infos
+        </p>
+
+        <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer"
+           data-page="game"
+           onclick="changePage(2); closeHamburger();">
+          Let's play !
+        </p>
+
+      </div>
+
     </div>
 
     <!------------>
 
 
-    <div id="main_container" class="flex-row-start-centered">
+    <div id="main_container" class="d-flex justify-content-start align-items-center">
 
-      <div id="page_analyze" class="main_page d-flex flex-column justify-content-between align-items-center">
+
+      <!-------------------->
+      <!-- PAGE : ANALYZE -->
+      <!-------------------->
+
+      <div id="page_analyze" class="main_page h_page0 d-flex flex-column justify-content-start align-items-center">
 
         <h2 class="fs-2_4rem font-weight-700 my-5rem">Analyze</h2>
 
-        <div id="main_display" class="d-flex flex-column justify-content-between align-items-center">
+        <div id="main_display" class="d-flex justify-content-between align-items-center">
 
-          <div class="tab_component">
+          <div id="control_container" class="d-flex flex-column justify-content-between align-items-center height-100 width-50 px-5rem">
 
-            <div class="tab_control flex-row-between-centered">
+            <div class="tab_component width-100">
 
-              <p class="tab_choice active" onclick="tabChoose(this)" data-choice="file">From file</p>
-              <p class="tab_choice" onclick="tabChoose(this)" data-choice="url">From url</p>
+              <div class="tab_control d-flex justify-content-center align-items-center">
+
+                <p class="tab_choice active" onclick="tabChoose(this)" data-choice="file">From file</p>
+                <p class="tab_choice" onclick="tabChoose(this)" data-choice="url">From url</p>
+
+              </div>
+
+              <div class="tab_display d-flex justify-content-center align-items-center">
+
+                <input id="imgInp_file"
+                        class="tab_child"
+                        type="file"
+                        name="image"
+                        accept="image/png, image/jpeg"
+                        data-choice="file"
+                        onchange="previewImage(this, 'file'); enableButton();">
+
+                <input id="imgInp_url"
+                        class="tab_child hidden"
+                        type="url"
+                        name="url"
+                        placeholder="https://example.com"
+                        pattern="https://.*" size="30"
+                        data-choice="url"
+                        onkeyup="previewImage(this, 'url'); enableButton();">
+
+              </div>
 
             </div>
 
-            <div class="tab_display flex-centered">
+            <div id="image_preview_container_mobile" class="d-none justify-content-center align-items-center min-height-30rem width-100 mt-5rem content-box">
 
-              <input id="imgInp_file"
-                      class="tab_child"
-                      type="file"
-                      name="image"
-                      accept="image/png, image/jpeg"
-                      data-choice="file"
-                      onchange="previewImage(this, 'file');">
+              <p id="img_placeholder_mobile">Image preview</p>
 
-              <input id="imgInp_url"
-                      class="tab_child hidden"
-                      type="url"
-                      name="url"
-                      placeholder="https://example.com"
-                      pattern="https://.*" size="30"
-                      data-choice="url"
-                      onchange="previewImage(this, 'url')">
+              <img id="imgPrev_mobile" class="z-index-50" src="assets/pictures/placeholder.png" alt="" />
+
+            </div>
+
+            <div id="main_submit" class="mt-10rem">
+
+              <div id="main_input_submit" class="d-flex justify-content-center align-items-center">
+                <button id="submit_button" class="grey_button disabled" disabled onclick="sendData('analyze')">Submit</button>
+              </div>
+
+              <div id="main_result" class="d-flex justify-content-center align-items-center">
+                <p id="main_result_display_analyze" class="main_result_display"></p><span class="text_input"></span>
+              </div>
 
             </div>
 
           </div>
 
-          <div id="image_preview_container" class="height-30rem">
+          <div id="image_preview_container" class="d-flex justify-content-center align-items-center height-100 max-width-50 mx-5rem content-box">
 
-            <img id="imgPrev" src="#" alt="" />
+            <p id="img_placeholder">Image preview</p>
+
+            <img id="imgPrev" class="z-index-50" src="assets/pictures/placeholder.png" alt="" />
 
           </div>
 
-        </div>
-
-        <div>
-          <div id="main_input_submit" class="flex-centered">
-            <button id="submit_button" class="grey_button" onclick="sendData('analyze')">Submit</button>
-          </div>
-
-          <div id="main_result" class="flex-centered">
-            <p id="main_result_display_analyze" class="main_result_display"></p><span class="text_input"></span>
-          </div>
         </div>
 
       </div>
 
-      <div id="page_infos" class="main_page">
+
+      <!------------------>
+      <!-- PAGE : INFOS -->
+      <!------------------>
+
+      <div id="page_infos" class="main_page h_page1">
 
         <div class="vertical_page">
 
-            <div class="flex-col-start-centered">
+            <div class="d-flex flex-column justify-content-start align-items-center">
 
               <h2 class="fs-2_4rem font-weight-700 my-5rem">Infos</h2>
 
@@ -141,53 +201,58 @@
 
         <div class="vertical_page">
 
-          <div class="flex-col-start-centered">
+          <div class="d-flex flex-column justify-content-start align-items-center">
 
             <h2 class="fs-2_4rem font-weight-700 my-5rem">Page 2</h2>
 
           </div>
 
-      </div>
+        </div>
 
       </div>
 
-      <div id="page_game" class="main_page d-flex flex-column justify-content-between align-items-center">
 
-        <div class="flex-col-start-centered">
+      <!----------------->
+      <!-- PAGE : GAME -->
+      <!----------------->
+
+      <div id="page_game" class="main_page h_page2 d-flex flex-column justify-content-between align-items-center">
+
+        <div class="d-flex flex-column justify-content-start align-items-center">
 
           <h2 class="fs-2_4rem font-weight-700 my-5rem">Let's play</h2>
 
-          <div id="default_random_content" class="random_content flex-centered">
+          <div id="default_random_content" class="random_content d-flex justify-content-center align-items-center">
             <img src="https://thispersondoesnotexist.com/" alt="Random person">
           </div>
 
-          <div id="random_content_loader" class="random_content flex-centered hidden">
+          <div id="random_content_loader" class="random_content d-flex justify-content-center align-items-center hidden">
             <div id="spinner" class="spinner-lg spinner-border text-light" role="status">
               <span class="sr-only">Loading...</span>
             </div>
           </div>
 
-          <div class="random_content flex-centered hidden"
+          <div class="random_content d-flex justify-content-center align-items-center hidden"
               data-randint="1">
             <img src="assets/pictures/arthur.jpeg" alt="Arthur">
           </div>
 
-          <div class="random_content flex-centered hidden"
+          <div class="random_content d-flex justify-content-center align-items-center hidden"
               data-randint="2">
             <img src="assets/pictures/charlotte.jpg" alt="Charlotte">
           </div>
 
-          <div class="random_content flex-centered hidden"
+          <div class="random_content d-flex justify-content-center align-items-center hidden"
               data-randint="3">
             <img src="assets/pictures/felipe.jpeg" alt="Felipe">
           </div>
 
-          <div class="random_content flex-centered hidden"
+          <div class="random_content d-flex justify-content-center align-items-center hidden"
               data-randint="4">
             <img src="assets/pictures/marguerite.jpeg" alt="Marguerite">
           </div>
 
-          <div class="random_content flex-centered hidden"
+          <div class="random_content d-flex justify-content-center align-items-center hidden"
               data-randint="2">
             <img src="assets/pictures/romain.jpeg" alt="Romain">
           </div>
@@ -196,11 +261,11 @@
 
         <div>
 
-          <div id="random_content_button" class="flex-centered my-2rem">
+          <div id="random_content_button" class="d-flex justify-content-center align-items-center my-2rem">
             <button id="submit_button_random" class="grey_button" onclick="getRandom()">Get random image</button>
           </div>
 
-          <div id="main_result" class="flex-centered">
+          <div id="main_result" class="d-flex justify-content-center align-items-center">
             <p id="main_result_display_random" class="main_result_display"></p><span class="text_input"></span>
           </div>
 
@@ -208,6 +273,8 @@
 
 
       </div>
+
+      <!----------------->
 
     </div>
 

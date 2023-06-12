@@ -2,6 +2,13 @@ currentPage = 0
 currentVerticalPage = 0
 wait = false
 
+const updateMainContainerHeight = () => {
+  main_container = document.getElementById('main_container')
+  current_page = document.querySelector(`.h_page${currentPage}`)
+
+  main_container.style.height = `${current_page.offsetHeight}px`
+  main_container.style.maxHeight = `${current_page.offsetHeight}px`
+}
 
 const checkKey = (e) => {
   e = e || window.event;
@@ -57,11 +64,12 @@ const changePage = (pageNum) => {
     currentPage = pageNum
     main_container.style.overflowX = 'scroll'
     main_container.scroll(changeParams);
+    updateMainContainerHeight();
 
     setTimeout(() => {
       main_container.style.overflowX = 'hidden'
       wait = false
-    }, 1000);
+    }, 500);
   }
 }
 
@@ -88,4 +96,10 @@ const changePageVertical = (pageNum) => {
   }
 }
 
+
+/////////////
+// ON LOAD //
+/////////////
+
+updateMainContainerHeight();
 document.onkeydown = checkKey;

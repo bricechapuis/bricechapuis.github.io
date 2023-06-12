@@ -50,7 +50,7 @@ a.disabled-link { pointer-events: none; }
 
 .z-index--1   { z-index: -1; }
 .z-index-2    { z-index: 2; } # would overwrite bootstrap
-.z-index-5   { z-index: 5; }
+.z-index-5   { z-index: 5 !important; }
 .z-index-50   { z-index: 50; }
 .z-index-100  { z-index: 100; }
 .z-index-150  { z-index: 150; }
@@ -216,6 +216,7 @@ a.disabled-link { pointer-events: none; }
 .max-width-95vw  { max-width: 95vw; }
 .max-width-100vw { max-width: 100vw; }
 .max-width-25rem { max-width: 25rem; }
+.max-width-50 { max-width: 50%; }
 .max-width-80 { max-width: 80%; }
 
 .width-10vw  { width: 10vw; }
@@ -255,6 +256,7 @@ a.disabled-link { pointer-events: none; }
 .height-30rem         { height: 30rem !important; }
 .height-40rem         { height: 40rem !important; }
 .height-sm-40rem         { @include from-medium {height: 40rem !important;}}
+.height-50rem         { height: 50rem !important; }
 
 .height-20  {height: 20% !important;}
 .height-60  { height: 60% !important; }
