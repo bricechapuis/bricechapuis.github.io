@@ -61,12 +61,10 @@ function checkVisible(elm, threshold = 0, mode = 'visible') {
 }
 
 const enableButton = () => {
-  console.log('start')
   container = document.getElementById('main_display')
   button = document.getElementById('submit_button')
   input = container.querySelector('input:not(.hidden)')
-  console.log(input.value)
-  console.log(button)
+
   if (input.value != '') {
     button.disabled = false
     button.classList.remove('disabled')
@@ -91,13 +89,13 @@ const sendData = () => {
 
   loadingResult(true)
 
-  input = document.querySelector('input:not(.hidden)')
+  input = document.querySelector('.tab_display').querySelector('input:not(.hidden)')
   formData = new FormData()
 
   if (input.type == 'file') {
-    formData.append("file", input.files[0]);
+    formData.append("file", input.files[0])
   } else {
-    formData.append("url", input.value);
+    formData.append("url", input.value)
   }
 
   upload(formData)
@@ -109,14 +107,14 @@ async function upload(formData) {
       method: "POST",
       body: formData,
       mode: 'cors'
-    });
+    })
 
-    const result = await response.json();
-    console.log("Success:", result);
+    const result = await response.json()
+    console.log("Success:", result)
 
     result['Prediction'] == 1 ? displayResult('real picture') : displayResult('fake')
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error:", error)
   }
 }
 
