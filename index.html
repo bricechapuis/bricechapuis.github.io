@@ -6,9 +6,7 @@
     <meta charset="UTF-8">
     <title>AI X Hunter</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/pictures/favicon.png">
     <link rel="manifest" href="images/favicons/site.webmanifest">
     <link rel="mask-icon" href="images/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
@@ -28,7 +26,7 @@
 
 
     <div class="nav-container height-10rem d-flex-wrap justify-content-center align-items-center
-                px-2rem width-100 smooth-transition-0_8s pos-rel">
+                px-2rem width-100 smooth-transition-0_8s">
 
       <a class="pos-abs mx-2rem"
         href="/"
@@ -43,20 +41,26 @@
       <div class="header-links d-flex align-items-center">
 
         <p class="bs-black bs-black-onclick bs-black-hover fs-2rem font-weight-700 mx-5rem cursor-pointer active"
-           data-page="analyze"
+           data-page="faces"
            onclick="changePage(0)">
-          Analyze
+          Faces
+        </p>
+
+        <p class="bs-black bs-black-onclick bs-black-hover fs-2rem font-weight-700 mx-5rem cursor-pointer"
+           data-page="general"
+           onclick="changePage(1)">
+          General
         </p>
 
         <p class="bs-black bs-black-onclick bs-black-hover fs-2rem font-weight-700 mx-5rem cursor-pointer"
            data-page="infos"
-           onclick="changePage(1)">
+           onclick="changePage(2)">
           Infos
         </p>
 
         <p class="bs-black bs-black-onclick bs-black-hover fs-2rem font-weight-700 mx-5rem cursor-pointer"
            data-page="game"
-           onclick="changePage(2)">
+           onclick="changePage(3)">
           Let's play !
         </p>
 
@@ -66,7 +70,7 @@
       <!-- BURGER -->
       <!------------>
 
-      <input class="navbar_checkbox d-none" type="checkbox" name="" id="navbar_checkbox" onclick="console.log(this.checked)"/>
+      <input class="navbar_checkbox d-none" type="checkbox" name="" id="navbar_checkbox"/>
 
       <div class="navbar_hamburger-lines d-none">
         <span class="line line1"></span>
@@ -74,23 +78,29 @@
         <span class="line line3"></span>
       </div>
 
-      <div class="navbar_hamburger_menu">
+      <div class="navbar_hamburger_menu z-index-100">
 
         <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer active"
-           data-page="analyze"
+           data-page="faces"
            onclick="changePage(0); closeHamburger();">
-          Analyze
+          Faces
+        </p>
+
+        <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer active"
+           data-page="general"
+           onclick="changePage(1); closeHamburger();">
+          General
         </p>
 
         <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer"
            data-page="infos"
-           onclick="changePage(1); closeHamburger();">
+           onclick="changePage(2); closeHamburger();">
           Infos
         </p>
 
         <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer"
            data-page="game"
-           onclick="changePage(2); closeHamburger();">
+           onclick="changePage(3); closeHamburger();">
           Let's play !
         </p>
 
@@ -101,16 +111,16 @@
     <!------------>
 
 
-    <div id="main_container" class="d-flex justify-content-start align-items-center">
+    <div id="main_container" class="d-flex justify-content-start align-items-start">
 
 
-      <!-------------------->
-      <!-- PAGE : ANALYZE -->
-      <!-------------------->
+      <!------------------>
+      <!-- PAGE : FACES -->
+      <!------------------>
 
-      <div id="page_analyze" class="main_page h_page0 d-flex flex-column justify-content-start align-items-center">
+      <div id="page_faces" class="main_page h_page0 d-flex flex-column justify-content-start align-items-center">
 
-        <h2 class="fs-2_4rem font-weight-700 my-5rem">Analyze</h2>
+        <h2 class="fs-2_4rem font-weight-700 my-5rem">Faces</h2>
 
         <div id="main_display" class="d-flex justify-content-between align-items-center">
 
@@ -133,7 +143,7 @@
                         name="image"
                         accept="image/png, image/jpeg"
                         data-choice="file"
-                        onchange="previewImage(this, 'file'); enableButton();">
+                        onchange="previewImage(this, 'file'); enableButton(this);">
 
                 <input id="imgInp_url"
                         class="tab_child hidden"
@@ -142,7 +152,7 @@
                         placeholder="https://example.com"
                         pattern="https://.*" size="30"
                         data-choice="url"
-                        onkeyup="previewImage(this, 'url'); enableButton();">
+                        onkeyup="previewImage(this, 'url'); enableButton(this);">
 
               </div>
 
@@ -159,11 +169,98 @@
             <div id="main_submit" class="mt-10rem">
 
               <div id="main_input_submit" class="d-flex justify-content-center align-items-center">
-                <button id="submit_button" class="grey_button disabled" disabled onclick="sendData('analyze')">Submit</button>
+                <button id="submit_button" class="grey_button disabled" disabled onclick="sendData(this)">Submit</button>
               </div>
 
-              <div id="main_result" class="d-flex justify-content-center align-items-center">
-                <p id="main_result_display_analyze" class="main_result_display"></p><span class="text_input"></span>
+              <div id="main_result" class="d-flex justify-content-center align-items-start">
+                <p id="main_result_display_faces" class="main_result_display"><span class="text_input"></span></p>
+              </div>
+
+              <div id="score_container_faces" class="score_container">
+                <div class="score"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div id="image_preview_container" class="d-flex justify-content-center align-items-center height-100 max-width-50 content-box">
+
+            <p id="img_placeholder">Image preview</p>
+
+            <img id="imgPrev" class="z-index-50" src="assets/pictures/placeholder.png" alt="" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-------------------->
+      <!-- PAGE : GENERAL -->
+      <!-------------------->
+
+      <div id="page_general" class="main_page h_page1 d-flex flex-column justify-content-start align-items-center">
+
+        <h2 class="fs-2_4rem font-weight-700 my-5rem">General</h2>
+
+        <div id="main_display" class="d-flex justify-content-between align-items-center">
+
+          <div id="control_container" class="d-flex flex-column justify-content-between align-items-center height-100 width-50 px-5rem">
+
+            <div class="tab_component width-100">
+
+              <div class="tab_control d-flex justify-content-center align-items-center">
+
+                <p class="tab_choice active" onclick="tabChoose(this)" data-choice="file">From file</p>
+                <p class="tab_choice" onclick="tabChoose(this)" data-choice="url">From url</p>
+
+              </div>
+
+              <div class="tab_display d-flex justify-content-center align-items-center">
+
+                <input id="imgInp_file"
+                        class="tab_child"
+                        type="file"
+                        name="image"
+                        accept="image/png, image/jpeg"
+                        data-choice="file"
+                        onchange="previewImage(this, 'file'); enableButton(this);">
+
+                <input id="imgInp_url"
+                        class="tab_child hidden"
+                        type="url"
+                        name="url"
+                        placeholder="https://example.com"
+                        pattern="https://.*" size="30"
+                        data-choice="url"
+                        onkeyup="previewImage(this, 'url'); enableButton(this);">
+
+              </div>
+
+            </div>
+
+            <div id="image_preview_container_mobile" class="d-none justify-content-center align-items-center min-height-30rem width-100 mt-5rem content-box">
+
+              <p id="img_placeholder_mobile">Image preview</p>
+
+              <img id="imgPrev_mobile" class="z-index-50" src="assets/pictures/placeholder.png" alt="" />
+
+            </div>
+
+            <div id="main_submit" class="mt-10rem">
+
+              <div id="main_input_submit" class="d-flex justify-content-center align-items-center">
+                <button id="submit_button" class="grey_button disabled" disabled onclick="sendData(this)">Submit</button>
+              </div>
+
+              <div id="main_result" class="d-flex justify-content-center align-items-start">
+                <p id="main_result_display_general" class="main_result_display"><span class="text_input"></span></p>
+              </div>
+
+              <div id="score_container_general" class="score_container">
+                <div class="score"></div>
               </div>
 
             </div>
@@ -182,12 +279,11 @@
 
       </div>
 
-
       <!------------------>
       <!-- PAGE : INFOS -->
       <!------------------>
 
-      <div id="page_infos" class="main_page h_page1">
+      <div id="page_infos" class="main_page h_page2">
 
         <div class="vertical_page">
 
@@ -216,7 +312,7 @@
       <!-- PAGE : GAME -->
       <!----------------->
 
-      <div id="page_game" class="main_page h_page2 d-flex flex-column justify-content-between align-items-center">
+      <div id="page_game" class="main_page h_page3 d-flex flex-column justify-content-between align-items-center">
 
         <div class="d-flex flex-column justify-content-start align-items-center">
 
@@ -262,11 +358,11 @@
         <div>
 
           <div id="random_content_button" class="d-flex justify-content-center align-items-center my-2rem">
-            <button id="submit_button_random" class="grey_button" onclick="getRandom()">Get random image</button>
+            <button id="submit_button_random" class="grey_button" onclick="getRandom(this)">Get random image</button>
           </div>
 
           <div id="main_result" class="d-flex justify-content-center align-items-center">
-            <p id="main_result_display_random" class="main_result_display"></p><span class="text_input"></span>
+            <p id="main_result_display_random" class="main_result_display"><span class="text_input"></span></p>
           </div>
 
         </div>

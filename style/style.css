@@ -182,7 +182,9 @@ button:focus, button:active {
 
 #image_preview_container, #image_preview_container_mobile {
   position: relative;
+  flex: 0 0 50%;
   border: 1px solid white;
+  border-radius: 5px;
 }
 
 #img_placeholder, #img_placeholder_mobile {
@@ -192,11 +194,15 @@ button:focus, button:active {
 
 #imgPrev {
   height: 100%;
+  width: 100%;
+  border-radius: 5px;
   object-fit: cover;
 }
 
 #imgPrev_mobile {
   height: 30rem;
+  width: 100%;
+  border-radius: 5px;
   object-fit: cover;
 }
 
@@ -253,6 +259,10 @@ button:focus, button:active {
   overflow-y: hidden;
 }
 
+#control_container {
+  flex: 0 0 50%;
+}
+
 .main_page {
   height: 100%;
   max-height: calc(100vh - 100px);
@@ -275,24 +285,48 @@ button:focus, button:active {
   width: 80%;
 }
 
+#main_submit {
+  width: 100%;
+}
+
+#main_result {
+  height: 12rem;
+}
+
 .main_result_display {
   width: fit-content;
-  height: 48px;
+  text-align: center;
   margin: 20px 0;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bolder;
   color:white;
 }
 
 .text_input {
+  display: inline-block;
   width: 1.5rem;
-  height: 30px;
   border-bottom: 0.08em solid white;
   animation: blink 1s infinite;
 }
 
 @keyframes blink { 50% { border-color:rgba(0,0,0,0); }  }
 
+.score_container {
+  width: 100%;
+  height: 3rem;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.score_container > .score {
+  height: 100%;
+  max-width: 0;
+  transition: all 1.5s ease-in-out;
+}
+
+#submit_button_random {
+  min-width: 20rem;
+}
 
 /**********/
 /* MOBILE */
@@ -329,5 +363,18 @@ button:focus, button:active {
 
   #main_submit {
     margin-top: 5rem !important;
+    margin-bottom: 5rem;
+  }
+
+  #main_result {
+    height: 10rem;
+  }
+
+  #main_result > p {
+    font-size: 2rem;
+  }
+
+  .text_input {
+    width: 1rem;
   }
 }

@@ -34,7 +34,7 @@ const checkKey = (e) => {
   }
   else if (e.keyCode == '39') {
     // right arrow
-    if (currentPage < 2 && currentVerticalPage == 0) {
+    if (currentPage < 3 && currentVerticalPage == 0) {
       changePage(currentPage + 1)
     }
   }
@@ -74,7 +74,7 @@ const changePage = (pageNum) => {
 }
 
 const changePageVertical = (pageNum) => {
-  if (!wait && currentPage == 1) {
+  if (!wait && currentPage == 2) {
     wait = true
 
     main_container = document.getElementById('main_container')
@@ -86,16 +86,21 @@ const changePageVertical = (pageNum) => {
     }
 
     currentVerticalPage = pageNum
-    main_container.style.overflowY = 'scroll'
     main_container.scroll(changeParams);
 
     setTimeout(() => {
-      main_container.style.overflowY = 'hidden'
       wait = false
-    }, 500);
+    }, 400);
   }
 }
 
+const scrollInfoPage = (direction) => {
+  if (direction == 'down' && currentVerticalPage < 1) {
+    changePageVertical(currentVerticalPage + 1)
+  } else if (currentVerticalPage > 0) {
+    changePageVertical(currentVerticalPage - 1)
+  }
+}
 
 /////////////
 // ON LOAD //
@@ -103,3 +108,11 @@ const changePageVertical = (pageNum) => {
 
 updateMainContainerHeight();
 document.onkeydown = checkKey;
+
+document.addEventListener('wheel', function(e){
+  wDelta = e.wheelDelta < 0 ? 'down' : 'up';
+  e.preventDefault()
+
+  scrollWait = true
+  scrollInfoPage(wDelta)
+});
