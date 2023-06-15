@@ -107,7 +107,7 @@ const scrollInfoPage = (direction) => {
 /////////////
 
 updateMainContainerHeight();
-document.onkeydown = checkKey;
+// document.onkeydown = checkKey;
 
 document.addEventListener('wheel', function(e){
   wDelta = e.wheelDelta < 0 ? 'down' : 'up';

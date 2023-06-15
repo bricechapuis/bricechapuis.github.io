@@ -27,17 +27,17 @@ h1, h2, p {
 }
 
 h1 {
-    font-family: "Montserrat Bold";
+    font-family: "Montserrat";
     font-size: 21px;
 }
 
 h2 {
-    font-family: "InfoDispBold Roman";
+    font-family: "Montserrat";
     font-size: 20px;
 }
 
 h3 {
-  font-family: "Infotext Normal";
+  font-family: "Montserrat";
   font-size: 16px;
 }
 
@@ -99,7 +99,7 @@ button:focus, button:active {
   font-size: 16px;
   font-weight: bolder;
   background-color: white;
-  color: #545B77;
+  color: #526D82;
   border: 1px solid white;
   border-radius: 5px;
   transition: all 0.5s ease-in-out;
@@ -113,15 +113,15 @@ button:focus, button:active {
 
 .grey_button.disabled:hover {
   background-color: lightgrey !important;
-  color: #545B77 !important;
+  color: #526D82 !important;
 }
 
 .grey_button > div {
-  color: #545B77 !important;
+  color: #526D82 !important;
 }
 
 .grey_button:hover {
-  background-color: #545B77;
+  background-color: #526D82;
   color: white;
 }
 
@@ -147,7 +147,7 @@ button:focus, button:active {
 
 .tab_choice:hover {
   background-color: white;
-  color: #545B77;
+  color: #526D82;
   font-weight: 700;
 }
 
@@ -254,7 +254,7 @@ button:focus, button:active {
 #main_container {
   height: calc(100vh - 100px);
   max-height: calc(100vh - 100px);
-  background-color: #545B77;
+  background-color: #526D82;
   overflow-x: hidden;
   overflow-y: hidden;
 }

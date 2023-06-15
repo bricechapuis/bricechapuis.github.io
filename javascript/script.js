@@ -74,6 +74,7 @@ const enableButton = (el) => {
   container = el.closest('.main_page')
   button = container.querySelector('#submit_button')
   input = container.querySelector('input:not(.hidden)')
+  // input = container.querySelector('.tab_choice.active').querySelector('input')
 
   if (input.value != '') {
     button.disabled = false
@@ -124,7 +125,7 @@ async function upload(formData, page) {
     console.log("Success:", result)
 
     if (result['Score']) {
-      displayResult(result['Score'] * 100 >= 50 ? 'real' : 'a fake', result['Score'] * 100)
+      displayResult(result['Score'] * 100 >= 50 ? 'real' : 'fake', result['Score'] * 100)
     } else {
       displayResult('error')
     }
@@ -157,7 +158,7 @@ const loadingResult = (bool) => {
 
 const displayResult = (result, score = 50) => {
   // txt = result == 'error' ? 'An error has occured, please check the provided data' : `This image is a ${result}`
-  txt = result == 'error' ? 'An error has occured, please check the provided data' : `This image is ${result}`
+  txt = result == 'error' ? 'An error has occured, please check the provided data' : `This image seems to be ${result}`
 
   scoreBar = document.getElementById(`score_container_${page}`).querySelector('.score')
   scoreBar.style.maxWidth = Math.round(score).toString() + '%'
