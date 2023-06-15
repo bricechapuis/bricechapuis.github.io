@@ -155,7 +155,7 @@
 /**********/
 
 
-@media (max-width: 37.5em) {
+@media (max-width: 64em) {
   .header-links {
     display: none !important;
   }

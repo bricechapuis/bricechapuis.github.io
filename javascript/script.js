@@ -88,14 +88,14 @@ const sendData = (el) => {
   container = el.closest('.main_page')
   page = container.id.split('_')[1]
 
-  if (!checkVisible(container.querySelector('.text_input'), 100)) {
-    changeParams = {
-      top: 200,
-      behavior: "smooth",
-    }
+  // if (!checkVisible(container.querySelector('.text_input'), 100)) {
+  //   changeParams = {
+  //     top: 200,
+  //     behavior: "smooth",
+  //   }
 
-    document.getElementById('main_container').scroll(changeParams);
-  }
+  //   document.getElementById('main_container').scroll(changeParams);
+  // }
 
   loadingResult(true)
 
@@ -151,6 +151,7 @@ const loadingResult = (bool) => {
     wait = true
   } else {
     button.innerHTML = 'Submit'
+    wait = false
   }
 }
 

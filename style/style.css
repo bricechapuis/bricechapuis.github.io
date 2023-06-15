@@ -312,8 +312,9 @@ button:focus, button:active {
 @keyframes blink { 50% { border-color:rgba(0,0,0,0); }  }
 
 .score_container {
-  width: 100%;
+  width: 70%;
   height: 3rem;
+  margin: 0 15%;
   background-color: white;
   border-radius: 5px;
 }
@@ -332,7 +333,7 @@ button:focus, button:active {
 /* MOBILE */
 /**********/
 
-@media (max-width: 37.5em) {
+@media (max-width: 64em) {
   #main_container {
     /* overflow-y: scroll; */
   }
@@ -377,4 +378,12 @@ button:focus, button:active {
   .text_input {
     width: 1rem;
   }
+}
+
+/**********/
+/* TABLET */
+/**********/
+
+@media (max-width: 64em) {
+
 }
