@@ -80,25 +80,25 @@
 
       <div class="navbar_hamburger_menu z-index-100">
 
-        <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer active"
+        <p class="bs-black bs-black-onclick bs-black-hover fs-1_4rem font-weight-700 px-2rem py-2rem m-0 cursor-pointer active"
            data-page="faces"
            onclick="changePage(0); closeHamburger();">
           Faces
         </p>
 
-        <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer active"
+        <p class="bs-black bs-black-onclick bs-black-hover fs-1_4rem font-weight-700 px-2rem py-2rem m-0 cursor-pointer active"
            data-page="general"
            onclick="changePage(1); closeHamburger();">
           General
         </p>
 
-        <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer"
+        <p class="bs-black bs-black-onclick bs-black-hover fs-1_4rem font-weight-700 px-2rem py-2rem m-0 cursor-pointer"
            data-page="infos"
            onclick="changePage(2); closeHamburger();">
           Infos
         </p>
 
-        <!-- <p class="bs-black bs-black-onclick bs-black-hover fs-1_2rem font-weight-700 mx-2rem my-1rem cursor-pointer"
+        <!-- <p class="bs-black bs-black-onclick bs-black-hover fs-1_4rem font-weight-700 px-2rem py-2rem m-0 cursor-pointer"
            data-page="game"
            onclick="changePage(3); closeHamburger();">
           Let's play !
@@ -169,15 +169,27 @@
             <div id="main_submit" class="mt-10rem">
 
               <div id="main_input_submit" class="d-flex justify-content-center align-items-center">
-                <button id="submit_button" class="grey_button disabled" disabled onclick="sendData(this)">Submit</button>
+                <button id="submit_button" class="grey_button disabled" disabled onclick="sendData(this)">Fake or not ?</button>
               </div>
 
               <div id="main_result" class="d-flex justify-content-center align-items-start">
                 <p id="main_result_display_faces" class="main_result_display"><span class="text_input"></span></p>
               </div>
 
-              <div id="score_container_faces" class="score_container">
-                <div class="score"></div>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <p class="score_fake">Fake</p>
+
+                <div id="score_container_faces" class="score_container pos-rel">
+
+                  <div class="score"></div>
+
+                  <div class="baseline"></div>
+
+                </div>
+
+                <p class="score_real">Real</p>
+
               </div>
 
             </div>
@@ -252,15 +264,27 @@
             <div id="main_submit" class="mt-10rem">
 
               <div id="main_input_submit" class="d-flex justify-content-center align-items-center">
-                <button id="submit_button" class="grey_button disabled" disabled onclick="sendData(this)">Submit</button>
+                <button id="submit_button" class="grey_button disabled" disabled onclick="sendData(this)">Fake or not ?</button>
               </div>
 
               <div id="main_result" class="d-flex justify-content-center align-items-start">
                 <p id="main_result_display_general" class="main_result_display"><span class="text_input"></span></p>
               </div>
 
-              <div id="score_container_general" class="score_container">
-                <div class="score"></div>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <p class="score_fake">Fake</p>
+
+                <div id="score_container_faces" class="score_container pos-rel">
+
+                  <div class="score"></div>
+
+                  <div class="baseline"></div>
+
+                </div>
+
+                <p class="score_real">Real</p>
+
               </div>
 
             </div>
@@ -290,6 +314,14 @@
             <div class="d-flex flex-column justify-content-start align-items-center">
 
               <h2 class="fs-2_4rem font-weight-700 my-5rem">Infos</h2>
+
+              <div class="infos">
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSGsYils8yuRK8HsZcpuDpeoKCewkVcFyZxk5m9lDoLgNA13wAlFzjb15N8mT9QhqXnh1mzCywN1OpU/embed?start=false&loop=false&delayms=15000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+              </div>
+
+              <div class="infos_small">
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSGsYils8yuRK8HsZcpuDpeoKCewkVcFyZxk5m9lDoLgNA13wAlFzjb15N8mT9QhqXnh1mzCywN1OpU/embed?start=false&loop=false&delayms=15000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+              </div>
 
             </div>
 

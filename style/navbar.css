@@ -127,8 +127,8 @@
   position: absolute;
   top: 10rem;
   right: 0;
-  width: 12rem;
-  transform: translateX(12rem);
+  width: 15rem;
+  transform: translateX(15rem);
   background-color: white;
   transition: transform 0.4s ease-in-out;
   -webkit-box-shadow: -1px 2px 2px 0px rgba(0,0,0,0.75);

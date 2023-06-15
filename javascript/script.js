@@ -124,7 +124,7 @@ async function upload(formData, page) {
     console.log("Success:", result)
 
     if (result['Score']) {
-      displayResult(result['Score'] * 100 < 1 ? Math.ceil(result['Score'] * 100) : Math.floor(result['Score'] * 100))
+      displayResult(result['Score'] * 100 >= 50 ? 'real' : 'a fake', result['Score'] * 100)
     } else {
       displayResult('error')
     }
@@ -145,32 +145,22 @@ const loadingResult = (bool) => {
   button = display.closest('#main_submit').querySelector('#submit_button')
 
   if (bool) {
-    scoreBar.style.maxWidth = '0'
+    scoreBar.style.maxWidth = '50%'
     display.innerHTML = "<span class='text_input'></span>"
     button.innerHTML = '<div id="spinner" class="spinner-sm spinner-border" role="status"><span class="sr-only">Loading...</span></div>'
     wait = true
   } else {
-    button.innerHTML = 'Submit'
+    button.innerHTML = 'Fake or not ?'
     wait = false
   }
 }
 
-const displayResult = (result) => {
+const displayResult = (result, score = 50) => {
   // txt = result == 'error' ? 'An error has occured, please check the provided data' : `This image is a ${result}`
-  txt = result == 'error' ? 'An error has occured, please check the provided data' : `Probability of this image being real is ${result}%`
+  txt = result == 'error' ? 'An error has occured, please check the provided data' : `This image is ${result}`
 
   scoreBar = document.getElementById(`score_container_${page}`).querySelector('.score')
-  scoreBar.style.maxWidth = Math.round(result).toString() + '%'
-
-  if (result <= 25) {
-    scoreBar.style.backgroundColor = '#FF0000'
-  } else if (result <= 50) {
-    scoreBar.style.backgroundColor = '#FF8000'
-  } else if (result <= 75) {
-    scoreBar.style.backgroundColor = '#80FF00'
-  } else {
-    scoreBar.style.backgroundColor = '#00CC00'
-  }
+  scoreBar.style.maxWidth = Math.round(score).toString() + '%'
 
   setTimeout(() => {
     loadingResult(false)

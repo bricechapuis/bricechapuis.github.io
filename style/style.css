@@ -94,7 +94,7 @@ button:focus, button:active {
 
 .grey_button {
   height: 50px;
-  min-width: 100px;
+  min-width: 155px;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bolder;
@@ -311,22 +311,60 @@ button:focus, button:active {
 
 @keyframes blink { 50% { border-color:rgba(0,0,0,0); }  }
 
+.score_fake {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bolder;
+  color: rgb(255,0,0);
+}
+
+.score_real {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bolder;
+  color: rgb(30,255,0);
+}
+
 .score_container {
   width: 70%;
   height: 3rem;
-  margin: 0 15%;
-  background-color: white;
+  margin: 0 2rem;
   border-radius: 5px;
+  background: rgb(255,0,0);
+  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,254,0,1) 50%, rgba(30,255,0,1) 100%);
 }
 
 .score_container > .score {
-  height: 100%;
-  max-width: 0;
+  position: relative;
+  margin-top: -0.75rem;
+  height: 150%;
+  max-width: 50%;
   transition: all 1.5s ease-in-out;
+  border-right: 4px solid black;
+  z-index: 10;
+}
+
+.score_container > .baseline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  border-right: 2px solid white;
+  z-index: 5;
 }
 
 #submit_button_random {
   min-width: 20rem;
+}
+
+
+/*********/
+/* INFOS */
+/*********/
+
+.infos_small {
+  display: none;
 }
 
 /**********/
@@ -377,6 +415,19 @@ button:focus, button:active {
 
   .text_input {
     width: 1rem;
+  }
+
+  .infos {
+    display: none !important;
+  }
+
+  .infos_small {
+    display: block !important;
+  }
+
+  .infos_small > iframe {
+    width: 95vw;
+    height: 30rem;
   }
 }
 
