@@ -256,7 +256,7 @@ button:focus, button:active {
   max-height: calc(100vh - 100px);
   background-color: #526D82;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 #control_container {

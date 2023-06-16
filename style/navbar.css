@@ -4,6 +4,7 @@
   left: 0;
   right: 0;
   background-color: white;
+  z-index: 10000;
 }
 
 .header-links > .header-links__active::after {
