@@ -109,7 +109,6 @@ const sendData = (el) => {
     formData.append("url", input.value)
   }
 
-  console.log(page)
   upload(formData, page)
 }
 

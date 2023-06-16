@@ -363,8 +363,9 @@ button:focus, button:active {
 /* INFOS */
 /*********/
 
-.infos_small {
-  display: none;
+.infos > iframe {
+  height: 50vh;
+  width: 75vw;
 }
 
 /**********/
@@ -421,11 +422,11 @@ button:focus, button:active {
     display: none !important;
   }
 
-  .infos_small {
+  .infos {
     display: block !important;
   }
 
-  .infos_small > iframe {
+  .infos > iframe {
     width: 95vw;
     height: 30rem;
   }
